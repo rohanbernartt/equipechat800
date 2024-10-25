@@ -84,7 +84,7 @@ export const ChartsDate = () => {
       {
         label: 'Dataset 1',
         data: ticketsData?.data.length > 0 ? ticketsData.data.map((item) => item.total) : [],
-        backgroundColor: ['#1A4783']
+        backgroundColor: ['#0F7EE5'] 
       },
     ],
   };
@@ -100,7 +100,7 @@ export const ChartsDate = () => {
 
   return (
     <>
-      <Typography component="h2" variant="h6" gutterBottom style={{ color: "#153969" }}>
+      <Typography component="h2" variant="h6" gutterBottom style={{ color: "#0763D8" }}>
         Total de atendimentos {ticketsData?.count}
       </Typography>
 

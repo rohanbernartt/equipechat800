@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     textAlign: "center",
     justifyContent: "center",
-    color: "#153969",
+    color: "rgba(0, 0, 0, 0.87)",
     paddingLeft: "8px",
     paddingRight: "8px",
     // paddingTop: "8px"
@@ -50,9 +50,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 100,
     marginBottom: theme.spacing(1),
     color: "white",
-    backgroundColor: "#1A4783",
-    borderRadius: "30%",
-    // padding: "8px",
+    backgroundColor: "#0F7EE5",
+    borderRadius: "100%",
+    padding: "10px",
   },
   typography: {
     margin: 0,
@@ -166,7 +166,7 @@ export default function TableMediaStatus(props) {
           <AccountCircleIcon
             style={{
               fontSize: "6vw",
-              color: "#1A4783",
+              color: "#0F7EE5",
             }}
           />
           <Typography className={classes.typography}>

@@ -18,6 +18,7 @@ import FlashOnIcon from "@material-ui/icons/FlashOn";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import CodeRoundedIcon from "@material-ui/icons/CodeRounded";
 import ViewKanban from "@mui/icons-material/ViewKanban";
+import EventIcon from "@material-ui/icons/Event";
 import Schedule from "@material-ui/icons/Schedule";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
@@ -28,6 +29,7 @@ import ListIcon from "@material-ui/icons/ListAlt";
 import AnnouncementIcon from "@material-ui/icons/Announcement";
 import ForumIcon from "@material-ui/icons/Forum";
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import RotateRight from "@material-ui/icons/RotateRight";
 import BusinessIcon from '@material-ui/icons/Business';
 import ViewListOutlinedIcon from "@material-ui/icons/ViewListOutlined"
 import { AddToQueueRounded, AttachFile, CalendarToday, DeviceHubOutlined, ExploreOutlined, Label, AllInclusive, Description } from '@material-ui/icons';
@@ -39,22 +41,50 @@ import Typography from "@material-ui/core/Typography";
 import { i18n } from "../translate/i18n";
 import { WhatsAppsContext } from "../context/WhatsApp/WhatsAppsContext";
 import { AuthContext } from "../context/Auth/AuthContext";
+import LoyaltyRoundedIcon from '@material-ui/icons/LoyaltyRounded';
 import { Can } from "../components/Can";
+import api from "../services/api";
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { socketConnection } from "../services/socket";
 import { isArray } from "lodash";
-import api from "../services/api";
 import toastError from "../errors/toastError";
+import { makeStyles } from "@material-ui/core/styles";
 import usePlans from "../hooks/usePlans";
 import useVersion from "../hooks/useVersion";
 // import logo from "../assets/logo.png";
+const useStyles = makeStyles((theme) => ({
+  ListSubheader: {
+    height: 26,
+    marginTop: "-15px",
+    marginBottom: "-10px",
+  },
+  logoutButton: { 
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: "#0F7EE5",
+    color: "#FFF",
+    "&:hover": {
+      backgroundColor: "#0763D8 !important",
+      color: "#FFF", 
+    }, 
+	},
+  colorIcons: {
+    color: theme.palette.drawerIcons,
+  },
+  colorText: {
+    color: theme.palette.drawerText,
+  },
+
+}));
 
 function ListItemLink(props) {
   const { icon, primary, to, className } = props;
-
+  const classes = useStyles();
   const renderLink = React.useMemo(
     () =>
       React.forwardRef((itemProps, ref) => (
-        <RouterLink to={to} ref={ref} {...itemProps} />
+        <RouterLink to={to} ref={ref} {...itemProps} /> 
       )),
     [to]
   );
@@ -126,9 +156,10 @@ const reducer = (state, action) => {
 };
 
 const MainListItems = (props, { collapsed }) => {
+  const classes = useStyles();
   const { drawerClose } = props;
   const { whatsApps } = useContext(WhatsAppsContext);
-  const { user } = useContext(AuthContext);
+  const { user, handleLogout } = useContext(AuthContext);
   const [connectionWarning, setConnectionWarning] = useState(false);
   const [openCampaignSubmenu, setOpenCampaignSubmenu] = useState(false);
   const [openKanbanSubmenu, setOpenKanbanSubmenu] = useState(false);
@@ -266,14 +297,35 @@ const MainListItems = (props, { collapsed }) => {
       toastError(err);
     }
   };
+  const handleClickLogout = () => {
+    //handleCloseMenu();
+    handleLogout();
+  };
 
   return (
     <div onClick={drawerClose}>
       <Can
+      
         role={user.profile}
         perform="dashboard:view"
+        style={{
+          overflowY: "scroll",
+        }}
         yes={() => (
           <>
+          <ListSubheader
+              hidden={collapsed}
+              style={{
+                position: "relative",
+                fontSize: "17px",
+                textAlign: "left",
+                paddingLeft: 20
+              }}
+              inset
+              color="inherit">
+              <Typography variant="overline" style={{ fontWeight: 'normal' }}>  {i18n.t("Gerência")} </Typography>
+            </ListSubheader>
+
             <ListItemLink
               to="/"
               primary="Dashboard"
@@ -287,6 +339,18 @@ const MainListItems = (props, { collapsed }) => {
           </>
         )}
       />
+      <ListSubheader
+              hidden={collapsed}
+              style={{
+                position: "relative",
+                fontSize: "17px",
+                textAlign: "left",
+                paddingLeft: 20
+              }}
+              inset
+              color="inherit">
+              <Typography variant="overline" style={{ fontWeight: 'normal' }}>  {i18n.t("Atendimento")} </Typography>
+       </ListSubheader>
       <ListItemLink
         to="/tickets"
         primary={i18n.t("mainDrawer.listItems.tickets")}
@@ -305,59 +369,11 @@ const MainListItems = (props, { collapsed }) => {
         icon={<FlashOnIcon />}
       />
 
-      {showKanban && (
-        <>
-          <ListItem
-            dense
-            button
-            onClick={() => setOpenKanbanSubmenu((prev) => !prev)}
-          >
-            <ListItemIcon>
-              <ViewKanban />
-            </ListItemIcon>
-            <ListItemText
-              primary={i18n.t("mainDrawer.listItems.kanban")}
-            />
-            {openKanbanSubmenu ? (
-              <ExpandLessIcon />
-            ) : (
-              <ExpandMoreIcon />
-            )}
-          </ListItem>
-          <Collapse
-            style={{ paddingLeft: 15 }}
-            in={openKanbanSubmenu}
-            timeout="auto"
-            unmountOnExit
-          >
-            <List dense component="div" disablePadding>
-              <ListItem onClick={() => history.push("/kanban")} button>
-                <ListItemIcon>
-                  <ListIcon />
-                </ListItemIcon>
-                <ListItemText primary={i18n.t("kanban.subMenus.list")} />
-              </ListItem>
-              <ListItem
-                onClick={() => history.push("/tagsKanban")}
-                button
-              >
-                <ListItemIcon>
-                  <CalendarToday />
-                </ListItemIcon>
-                <ListItemText primary={i18n.t("kanban.subMenus.tags")} />
-              </ListItem>
-            </List>
-          </Collapse>
-        </>
-      )}
-
-
       <ListItemLink
         to="/contacts"
         primary={i18n.t("mainDrawer.listItems.contacts")}
         icon={<ContactPhoneOutlinedIcon />}
       />
-
       {showSchedules && (
         <>
           <ListItemLink
@@ -367,13 +383,16 @@ const MainListItems = (props, { collapsed }) => {
           />
         </>
       )}
-
+          <ListItemLink
+            to="/todolist"
+            primary={i18n.t("Tarefas")}
+            icon={<EventIcon />}
+          />
       <ListItemLink
         to="/tags"
         primary={i18n.t("mainDrawer.listItems.tags")}
         icon={<LocalOfferIcon />}
       />
-
       {showInternalChat && (
         <>
           <ListItemLink
@@ -405,9 +424,17 @@ const MainListItems = (props, { collapsed }) => {
         perform="drawer-admin-items:view"
         yes={() => (
           <>
-            <Divider />
-            <ListSubheader inset>
-              {i18n.t("mainDrawer.listItems.administration")}
+            <ListSubheader
+              hidden={collapsed}
+              style={{
+                position: "relative",
+                fontSize: "17px",
+                textAlign: "left",
+                paddingLeft: 20
+              }}
+              inset
+              color="inherit">
+              <Typography variant="overline" style={{ fontWeight: 'normal' }}>  {i18n.t("Administração")} </Typography>
             </ListSubheader>
             {showCampaigns && (
               <>
@@ -471,17 +498,17 @@ const MainListItems = (props, { collapsed }) => {
                 icon={<AnnouncementIcon />}
               />
             )}
+             <ListItemLink
+              to="/connections"
+              primary={i18n.t("mainDrawer.listItems.connections")}
+              icon={
+                <Badge badgeContent={connectionWarning ? "!" : 0} color="error">
+                  <SyncAltIcon />
+                </Badge>
+              }
+            />
 
-            {showExternalApi && (
-              <>
-                <ListItemLink
-                  to="/messages-api"
-                  primary={i18n.t("mainDrawer.listItems.messagesAPI")}
-                  icon={<CodeRoundedIcon />}
-                />
-              </>
-            )}
-
+            
             <ListItemLink
               to="/users"
               primary={i18n.t("mainDrawer.listItems.users")}
@@ -492,6 +519,24 @@ const MainListItems = (props, { collapsed }) => {
               primary={i18n.t("mainDrawer.listItems.queues")}
               icon={<AccountTreeOutlinedIcon />}
             />
+            {showIntegration &&
+              (<>
+                <ListItemLink
+                  to="/queue-integration"
+                  primary={i18n.t("mainDrawer.listItems.queueIntegration")}
+                  icon={<DeviceHubOutlined />}
+                />
+              </>
+              )}
+            {showExternalApi && (
+              <>
+                <ListItemLink
+                  to="/messages-api"
+                  primary={i18n.t("mainDrawer.listItems.messagesAPI")}
+                  icon={<CodeRoundedIcon />}
+                />
+              </>
+            )}
 
             {showOpenAi && (
               <>
@@ -503,27 +548,11 @@ const MainListItems = (props, { collapsed }) => {
               </>
             )}
 
-            {showIntegration &&
-              (<>
-                <ListItemLink
-                  to="/queue-integration"
-                  primary={i18n.t("mainDrawer.listItems.queueIntegration")}
-                  icon={<DeviceHubOutlined />}
-                />
-              </>
-              )}
+            
 
-            <ListItemLink
-              to="/connections"
-              primary={i18n.t("mainDrawer.listItems.connections")}
-              icon={
-                <Badge badgeContent={connectionWarning ? "!" : 0} color="error">
-                  <SyncAltIcon />
-                </Badge>
-              }
-            />
+           
 
-            <ListItemLink
+            {/* <ListItemLink
               to="/plantao"
               primary={'Plantão'}
               icon={
@@ -531,7 +560,7 @@ const MainListItems = (props, { collapsed }) => {
                 <Ri24HoursFill size={24} />
 
               }
-            />
+            /> */}
 
             <ListItemLink
               to="/files"
@@ -587,6 +616,23 @@ const MainListItems = (props, { collapsed }) => {
           </>
         )}
       />
+      <li>
+      <ListItem
+          button
+          dense
+          onClick={handleClickLogout}
+          className={classes.logoutButton}
+        >
+          <ListItemIcon>
+            <RotateRight />
+          </ListItemIcon>
+          <ListItemText primary={i18n.t("Sair")} />
+        </ListItem>
+      </li>
+      <Divider />
+      {/**versão do software */}
+      <Typography variant="caption" align="center" style={{ marginTop: 10, marginBottom: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}> Versão 8.0.0</Typography>
+
     </div>
   );
 };

@@ -515,8 +515,8 @@ const TicketsManagerTabs = () => {
                   <Typography
                     style={{
                       marginLeft: 8,
-                      fontSize: 10,
-                      fontWeight: 600,
+                      fontSize: 14,
+                      fontWeight: 500,
                     }}
                   >
                     {i18n.t("ticketsList.assignedHeader")}
@@ -550,8 +550,8 @@ const TicketsManagerTabs = () => {
                   <Typography
                     style={{
                       marginLeft: 8,
-                      fontSize: 10,
-                      fontWeight: 600,
+                      fontSize: 14,
+                      fontWeight: 500,
                     }}
                   >
                     {i18n.t("ticketsList.pendingHeader")}
@@ -585,8 +585,8 @@ const TicketsManagerTabs = () => {
                   <Typography
                     style={{
                       marginLeft: 8,
-                      fontSize: 10,
-                      fontWeight: 600,
+                      fontSize: 14,
+                      fontWeight: 500,
                     }}
                   >
                     {i18n.t("ticketsList.groupingHeader")}

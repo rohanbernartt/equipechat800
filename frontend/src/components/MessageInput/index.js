@@ -973,7 +973,7 @@ const MessageInput = ({ ticketId, ticketStatus }) => {
                     onClick={handleChangeSign}
                   >
                     {signMessage === true ? (
-                      <Create style={{ color: "#065183" }} />
+                      <Create style={{ color: "#0763D8" }} />
                     ) : (
                       <Create style={{ color: "grey" }} />
                     )}
@@ -987,7 +987,7 @@ const MessageInput = ({ ticketId, ticketStatus }) => {
                   onClick={handlePrivateMessage}
                 >
                   {privateMessage === true ? (
-                    <Comment style={{ color: "#065183" }} />
+                    <Comment style={{ color: "#0763D8" }} />
                   ) : (
                     <Comment style={{ color: "grey" }} />
                   )}
@@ -1046,7 +1046,7 @@ const MessageInput = ({ ticketId, ticketStatus }) => {
                       onClick={handleChangeSign}
                     >
                       {signMessage === true ? (
-                        <Create style={{ color: "#065183" }} />
+                        <Create style={{ color: "#0763D8" }} />
                       ) : (
                         <Create style={{ color: "grey" }} />
                       )}
@@ -1060,7 +1060,7 @@ const MessageInput = ({ ticketId, ticketStatus }) => {
                     onClick={handlePrivateMessage}
                   >
                     {privateMessage === true ? (
-                      <Comment style={{ color: "#065183" }} />
+                      <Comment style={{ color: "#0763D8" }} />
                     ) : (
                       <Comment style={{ color: "grey" }} />
                     )}

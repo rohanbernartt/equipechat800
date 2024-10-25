@@ -20,13 +20,14 @@ import { i18n } from "../../translate/i18n";
 import api from "../../services/api";
 import ButtonWithSpinner from "../ButtonWithSpinner";
 import MarkdownWrapper from "../MarkdownWrapper";
-import { Tooltip } from "@material-ui/core";
+import {Chip, IconButton, Tooltip } from "@material-ui/core";
 import { AuthContext } from "../../context/Auth/AuthContext";
 import { TicketsContext } from "../../context/Tickets/TicketsContext";
 import toastError from "../../errors/toastError";
 import { v4 as uuidv4 } from "uuid";
 
 import GroupIcon from '@material-ui/icons/Group';
+import FaceIcon from "@material-ui/icons/Face";
 // import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 // import InstagramIcon from "@material-ui/icons/Instagram";
 // import FacebookIcon from "@material-ui/icons/Facebook";
@@ -59,10 +60,10 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 1,
         padding: 1,
         fontWeight: 'bold',
-        // paddingLeft: 5,
-        // paddingRight: 5,
-        borderRadius: 3,
-        fontSize: "0.5em",
+        paddingLeft: 5,
+        paddingRight: 5,
+        borderRadius: 3, 
+        fontSize: "0.8em",
         whiteSpace: "nowrap"
     },
     noTicketsDiv: {
@@ -74,13 +75,12 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
     },
     newMessagesCount: {
-        justifySelf: "flex-end",
-        textAlign: "right",
-        position: "relative",
-        top: 0,
-        color: "green",
-        fontWeight: "bold",
-        marginRight: "-19px",
+        position: "absolute",
+        alignSelf: "center",
+        marginRight: 8,
+        marginLeft: "auto",
+        top: "10px",
+        left: "20px",
         borderRadius: 0,
     },
     noTicketsText: {
@@ -95,11 +95,11 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 1,
         padding: 1,
         fontWeight: 'bold',
-        // paddingLeft: 5,
-        // paddingRight: 5,
+        paddingLeft: 5,
+        paddingRight: 5,
         borderRadius: 3,
-        fontSize: "0.6em",
-        // whiteSpace: "nowrap"
+        fontSize: "0.8em",
+        whiteSpace: "nowrap"
     },
     noTicketsTitle: {
         textAlign: "center",
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
         justifySelf: "flex-end",
         textAlign: "right",
         position: "relative",
-        top: -30,
+        top: -0,
         marginRight: "1px"
     },
 
@@ -170,7 +170,7 @@ const useStyles = makeStyles((theme) => ({
 
     ticketQueueColor: {
         flex: "none",
-        // width: "8px",
+        width: "8px",
         height: "100%",
         position: "absolute",
         top: "0%",
@@ -183,6 +183,8 @@ const useStyles = makeStyles((theme) => ({
     },
     secondaryContentSecond: {
         display: 'flex',
+        marginTop: "5px",
+        marginLeft: "5px",
         // marginBottom: 2,
         // marginLeft: "5px",
         alignItems: "flex-start",
@@ -428,7 +430,7 @@ const TicketListItemCustom = ({ ticket }) => {
     const handleCloseAlert = useCallback(() => {
         setOpenAlert(false);
         setLoading(false);
-    }, []);
+    }, []); 
 
     const handleSelectTicket = (ticket) => {
         const code = uuidv4();
@@ -552,10 +554,13 @@ const TicketListItemCustom = ({ ticket }) => {
 
                                     </>
                                 }
-                                <span className={classes.secondaryContentSecond} >
+                                <span style={{ marginTop: 4, }} className={classes.secondaryContentSecond} >
                                     {whatsAppName ? <Badge className={classes.connectionTag}>{whatsAppName}</Badge> : <br></br>}
                                     {<Badge style={{ backgroundColor: ticket.queue?.color || "#7c7c7c" }} className={classes.connectionTag}>{ticket.queue?.name.toUpperCase() || "SEM FILA"}</Badge>}
-                                    {ticketUser && (<Badge style={{ backgroundColor: "#000000" }} className={classes.connectionTag}>{ticketUser}</Badge>)}
+                                    {/* {ticketUser && (<Badge style={{ backgroundColor: "#000000" }} className={classes.connectionTag}>{ticketUser}</Badge>)} */}
+                                </span>
+                                <span style={{ marginTop: 4, fontSize: 5 }} className={classes.secondaryContentSecond} >
+                                        {ticketUser ? <Chip size="small" icon={<FaceIcon />} label={ticketUser} variant="outlined" /> : <br></br>}
                                 </span>
                                 <span className={classes.secondaryContentSecond} >
                                     {

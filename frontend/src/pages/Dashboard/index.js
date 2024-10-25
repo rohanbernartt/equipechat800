@@ -437,7 +437,7 @@ const Dashboard = () => {
                   fontSize="inherit"
                   htmlColor="white"
                   style={{
-                    backgroundColor: "#1A4783",
+                    backgroundColor: "#0F7EE5",
                     borderRadius: "30%",
                     padding: "8px",
                     // border: "1px solid #ccc",
@@ -463,9 +463,9 @@ const Dashboard = () => {
                 fontSize="inherit"
                 htmlColor="white"
                 style={{
-                  backgroundColor: "#1A4783",
-                  borderRadius: "30%",
-                  padding: "8px",
+                  backgroundColor: "#0F7EE5",
+                  borderRadius: "100%",
+                  padding: "10px",
                   // border: "1px solid #ccc",
                   // boxSizing: "border-box",
                   // width: "80px",
@@ -484,9 +484,9 @@ const Dashboard = () => {
                 fontSize="inherit"
                 htmlColor="white"
                 style={{
-                  backgroundColor: "#1A4783",
-                  borderRadius: "30%",
-                  padding: "8px",
+                  backgroundColor: "#0F7EE5",
+                  borderRadius: "100%",
+                  padding: "10px",
                   // border: "1px solid #ccc",
                   // boxSizing: "border-box",
                   // width: "80px",
@@ -506,9 +506,9 @@ const Dashboard = () => {
                 fontSize="inherit"
                 htmlColor="white"
                 style={{
-                  backgroundColor: "#1A4783",
-                  borderRadius: "30%",
-                  padding: "8px",
+                  backgroundColor: "#0F7EE5",
+                  borderRadius: "100%",
+                  padding: "10px",
                   // border: "1px solid #ccc",
                   // boxSizing: "border-box",
                   // width: "80px",
@@ -531,9 +531,9 @@ const Dashboard = () => {
                 fontSize="inherit"
                 htmlColor="white"
                 style={{
-                  backgroundColor: "#1A4783",
-                  borderRadius: "30%",
-                  padding: "8px",
+                  backgroundColor: "#0F7EE5",
+                  borderRadius: "100%",
+                  padding: "10px",
                   // border: "1px solid #ccc",
                   // boxSizing: "border-box",
                   // width: "80px",
@@ -552,9 +552,9 @@ const Dashboard = () => {
                 fontSize="inherit"
                 htmlColor="white"
                 style={{
-                  backgroundColor: "#1A4783",
-                  borderRadius: "30%",
-                  padding: "8px",
+                  backgroundColor: "#0F7EE5",
+                  borderRadius: "100%",
+                  padding: "10px",
                   // border: "1px solid #ccc",
                   // boxSizing: "border-box",
                   // width: "80px",
@@ -562,7 +562,7 @@ const Dashboard = () => {
                 }}
               />
               }
-              title="T.M. de Atendimento"
+              title="T.M.A."
               value={formatTime(counters.avgSupportTime)}
               loading={loading}
             />
@@ -577,9 +577,9 @@ const Dashboard = () => {
                 fontSize="inherit"
                 htmlColor="white"
                 style={{
-                  backgroundColor: "#1A4783",
-                  borderRadius: "30%",
-                  padding: "8px",
+                  backgroundColor: "#0F7EE5",
+                  borderRadius: "100%",
+                  padding: "10px",
                   // border: "1px solid #ccc",
                   // boxSizing: "border-box",
                   // width: "80px",
@@ -600,9 +600,9 @@ const Dashboard = () => {
               loading={loading}
               icon={
                 <div style={{
-                  backgroundColor: "#1A4783",
-                  borderRadius: "30%",
-                  padding: "8px",
+                  backgroundColor: "#0F7EE5",
+                  borderRadius: "100%",
+                  padding: "10px",
                   // border: "1px solid #ccc",
                   // boxSizing: "border-box",
                   // width: "80px",
@@ -684,7 +684,7 @@ const Dashboard = () => {
               // onClick={() => fetchData()}
               // variant="contained"
               // color="primary"
-              style={{ backgroundColor: "#1A4783", color: "white" }}
+              style={{ backgroundColor: "#0F7EE5", color: "white" }}
             >
               Filtrar
             </ButtonWithSpinner>

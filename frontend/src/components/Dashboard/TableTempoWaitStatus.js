@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         textAlign: 'center',
         justifyContent: 'center',
-        color: "#153969",
+        color: "rgba(0, 0, 0, 0.87)"
     },
     paper: {
         padding: theme.spacing(2),
@@ -147,7 +147,7 @@ export default function TableMediaStatus(props) {
         labels: ['Ótimo', 'Bom', 'Ruim'],
         datasets: [
             {
-                label: 'Avaliação do Atendimento',
+                label: 'Avaliação',
                 // data: [dougsData?.boa, dougsData?.media, dougsData?.ruim], //Carregando os dados
                 data: dougsData ? [dougsData.boa, dougsData.media, dougsData.ruim] : [0, 0, 0],
                 backgroundColor: ['#1A4783', '#FF6737', '#FF0505',],
@@ -186,7 +186,7 @@ export default function TableMediaStatus(props) {
         <TableContainer component={Paper} style={{ borderRadius: '5px', filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))" }} >
             <div className={classes.header}>
                 <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                    Avaliação dos Atendimentos
+                    Avaliação 
                 </Typography>
             </div>
 

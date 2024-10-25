@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Formik, Form, Field } from "formik";
-
+import InputMask from 'react-input-mask';
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -25,6 +25,8 @@ import { InputLabel, MenuItem, Select } from "@material-ui/core";
 
 import { openApi } from "../../services/api";
 import toastError from "../../errors/toastError";
+import { AuthContext } from "../../context/Auth/AuthContext";
+import logo from "../../assets/logo.png";
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
@@ -38,15 +40,32 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 // 			{new Date().getFullYear()}
 // 			{"."}
 // 		</Typography>
-// 	);
+// 	); 
 // };
 
 const useStyles = makeStyles(theme => ({
+
+    root: {
+		width: "100vw",
+		height: "100vh",
+		background: "linear-gradient(to right, #0662D8 , #0662D8 , #078AEC)",
+		//backgroundImage: "url(https://equipechat.com/imagens/equipechat.jpg)",
+		backgroundRepeat: "no-repeat",
+		backgroundSize: "100% 100%",
+		backgroundPosition: "center",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "center",
+		textAlign: "center",
+	},
     paper: {
-        marginTop: theme.spacing(8),
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        backgroundColor: "#fff",
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		padding: "30px 30px",
+		borderRadius: "12.5px",
     },
     avatar: {
         margin: theme.spacing(1),
@@ -115,15 +134,13 @@ const SignUp = () => {
     };
 
     return (
+        <div className={classes.root}>
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    {i18n.t("signup.title")}
-                </Typography>
+                <div>
+					<img style={{ margin: "0 auto", width: "70%" }} src={logo} alt="Whats" />
+				</div>
                 {/* <form className={classes.form} noValidate onSubmit={handleSignUp}> */}
                 <Formik
                     initialValues={user}
@@ -199,14 +216,27 @@ const SignUp = () => {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Field
-                                        as={TextField}
+                                        as={InputMask}
+                                        mask="(99) 99999-9999"
                                         variant="outlined"
                                         fullWidth
                                         id="phone"
-                                        label={i18n.t("signup.form.phone")}
                                         name="phone"
+                                        error={touched.phone && Boolean(errors.phone)}
+                                        helperText={touched.phone && errors.phone}
                                         autoComplete="phone"
-                                    />
+                                        required
+                                    >
+                                        {({ field }) => (
+                                            <TextField
+                                                {...field}
+                                                variant="outlined"
+                                                fullWidth
+                                                label={i18n.t("signup.form.phone")}
+                                                inputProps={{ maxLength: 11 }} // Definindo o limite de caracteres
+                                            />
+                                        )}
+                                    </Field>
                                 </Grid>
 
                                 {/* TOKEN */}
@@ -223,8 +253,8 @@ const SignUp = () => {
                                 </Grid> */}
 
                                 <Grid item xs={12}>
-                                    <InputLabel htmlFor="plan-selection">Plano</InputLabel>
-                                    <Field
+                                    <InputLabel htmlFor="plan-selection">{i18n.t("compaies.table.plan")}</InputLabel>
+                                    <Field 
                                         as={Select}
                                         variant="outlined"
                                         fullWidth
@@ -233,6 +263,9 @@ const SignUp = () => {
                                         name="planId"
                                         required
                                     >
+                                        <MenuItem value="disabled" disabled>
+                                        	<em>Selecione seu plano de assinatura</em>
+										</MenuItem>
                                         {plans.map((plan, key) => (
                                             <MenuItem key={key} value={plan.id}>
                                                 {plan.name} - Atendentes: {plan.users} - WhatsApp: {plan.connections} - Filas: {plan.queues} - R$ {plan.amount}
@@ -269,6 +302,7 @@ const SignUp = () => {
             </div>
             <Box mt={5}>{/* <Copyright /> */}</Box>
         </Container>
+        </div>
     );
 };
 

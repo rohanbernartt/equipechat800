@@ -67,11 +67,11 @@ const useStyles = makeStyles((theme) => ({
     },
     backgroundColor: theme.palette.fancyBackground,
     '& .MuiButton-outlinedPrimary': {
-      color: theme.mode === 'light' ? '#065183' : '#FFF',
+      color: theme.mode === 'light' ? '#0763D8' : '#FFF',
       border: theme.mode === 'light' ? '1px solid rgba(0 124 102)' : '1px solid rgba(255, 255, 255, 0.5)',
     },
     '& .MuiTab-textColorPrimary.Mui-selected': {
-      color: theme.mode === 'light' ? '#065183' : '#FFF',
+      color: theme.mode === 'light' ? '#0763D8' : '#FFF',
     }
   },
   avatar: {
@@ -449,11 +449,12 @@ const LoggedInLayout = ({ children, themeToggle }) => {
         open={drawerOpen}
       >
         <div className={classes.toolbarIcon}>
-          <img src={logo} style={{ display: "block", margin: "0 auto", height: "50px", width: "100%" }} alt="logo" />
+          <img src={logo} style={{ display: "block", margin: "0 auto", width: "60%" }} alt="logo" />
           <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
+        <Divider />
         <List className={classes.containerWithScroll}>
           {mainListItems}
           {/* <MainListItems drawerClose={drawerClose} collapsed={!drawerOpen} /> */}
@@ -501,7 +502,7 @@ const LoggedInLayout = ({ children, themeToggle }) => {
           </Typography>
 
           {/* DESABILITADO POIS TEM BUGS */}
-          { <UserLanguageSelector /> }
+          {/* { <UserLanguageSelector /> } */}
           {/* <SoftPhone
             callVolume={33} //Set Default callVolume
             ringVolume={44} //Set Default ringVolume

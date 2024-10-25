@@ -85,7 +85,7 @@ export const ChartsUser = () => {
         label: 'Dataset 1',
         data: ticketsData?.data.length > 0 ? ticketsData.data.map((item) => item.quantidade) : [],
         backgroundColor: [
-          '#1A4783', '#FF6737', '#FF0505', '#32a852', '#FFFF00', '#FFD700', '#DAA520',
+          '#0F7EE5', '#FF6737', '#FF0505', '#32a852', '#FFFF00', '#FFD700', '#DAA520',
           '#FF8C00', '#808080', '#008B8B', '#008000', '#FFA500', '#9ACD32', '#228B22',
           '#FFA500', '#2F4F4F', '#8B0000', '#C0C0C0', '#808000', '#363636', '#836FFF',
           '#FFDAB9', '#FFA07A', '#7CFC00', '#B0E0E6', '#00FFFF', '#ff0000', '#FFFACD',
@@ -124,7 +124,7 @@ export const ChartsUser = () => {
 
   return (
     <>
-      <Typography component="h2" variant="h6" gutterBottom style={{ color: "#153969" }}>
+      <Typography component="h2" variant="h6" gutterBottom style={{ color: "#0763D8" }}>
         Total de atendimentos por usuário
       </Typography>
 
@@ -150,7 +150,7 @@ export const ChartsUser = () => {
         {/* <Button
           className="buttonHover"
           onClick={handleGetTicketsInformation}
-          style={{ backgroundColor: "#1A4783", color: "white" }}
+          style={{ backgroundColor: "#0F7EE5", color: "white" }}
         >
           Filtrar
         </Button> */}

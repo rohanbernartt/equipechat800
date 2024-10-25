@@ -878,7 +878,7 @@ const MessageInputCustom = (props) => {
                   onClick={handleChangeSign}
                   
                 >
-                {signMessage === true ? <Create style={{ color: "#065183" }} /> : <Create style={{ color: "grey" }} />}
+                {signMessage === true ? <Create style={{ color: "#0763D8" }} /> : <Create style={{ color: "grey" }} />}
               </IconButton>
             </Tooltip>
             )}
@@ -888,7 +888,7 @@ const MessageInputCustom = (props) => {
                 component="span"
                 onClick={handlePrivateMessage}
               >
-              {privateMessage === true ? <Comment style={{ color: "#065183" }} /> : <Comment style={{ color: "grey" }} />}
+              {privateMessage === true ? <Comment style={{ color: "#0763D8" }} /> : <Comment style={{ color: "grey" }} />}
             </IconButton>
           </Tooltip>            
 

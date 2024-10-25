@@ -84,8 +84,8 @@ const messages = {
           newContacts: "Novos Contatos",
           totalReceivedMessages: "Minhas Mensagens Recebidas Totais",
           totalSentMessages: "Minhas Mensagens Enviadas Totais",
-          averageServiceTime: "T.M. de Atendimento",
-          averageWaitingTime: "T.M. de Espera",
+          averageServiceTime: "T.M.A.",
+          averageWaitingTime: "T.M.E.",
           status: "Status (Atual)",
           chatsClosed: "Chats Encerrados",
           dueDate:"Data de Vencimento"
@@ -844,7 +844,7 @@ const messages = {
         listItems: {
           dashboard: "Dashboard",
           connections: "Conexões",
-          chatsTempoReal: "Painel de Atendimentos",
+          chatsTempoReal: "Painel",
           tickets: "Atendimentos",
           quickMessages: "Respostas Rápidas",
           contacts: "Contatos",

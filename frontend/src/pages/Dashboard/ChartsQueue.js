@@ -93,14 +93,14 @@ export const ChartsQueue = () => {
       {
         label: 'Dataset 1',
         data: ticketsData && ticketsData.length > 0 && ticketsData.map((item) => item.quantidade),
-        backgroundColor: '#1A4783',
+        backgroundColor: '#0F7EE5',
       },
     ],
   };
 
   return (
     <>
-      <Typography component="h2" variant="h6" gutterBottom style={{ color: "#153969" }}>
+      <Typography component="h2" variant="h6" gutterBottom style={{ color: "#0763D8" }}>
         Atendimentos por departamento
       </Typography>
 

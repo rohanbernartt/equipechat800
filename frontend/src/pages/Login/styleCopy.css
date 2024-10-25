@@ -18,8 +18,8 @@ body{
 }
 
 .container{
-    width: 100vw;
-    height: 100vh;
+    width: 200vw;
+    height: 200vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
@@ -64,7 +64,7 @@ form{
     grid-template-columns: 7% 93%;
     margin: 25px 0;
     padding: 5px 0;
-    border-bottom: 2px solid #d9d9d9;
+    border-bottom: 2px solid #F7F7F7;
 }
 
 .login-content .input-div.one{
@@ -72,7 +72,7 @@ form{
 }
 
 .i{
-	color: #d9d9d9;
+	color: #F7F7F7;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -103,7 +103,7 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #38d39f;
+	background-color: #34BCFF;
 	transition: .4s;
 }
 
@@ -125,7 +125,7 @@ form{
 }
 
 .input-div.focus > .i > i{
-	color: #38d39f;
+	color: #34BCFF;
 }
 
 .input-div > div > input{
@@ -157,7 +157,7 @@ a{
 }
 
 a:hover{
-	color: #38d39f;
+	color: #0763D8;
 }
 
 .btn{
@@ -167,10 +167,10 @@ a:hover{
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-image: linear-gradient(to right, #0763D8, #0763D8, #0763D8);
 	background-size: 200%;
 	font-size: 1.2rem;
-	color: #fff;
+	color: #F7F7F7;
 	font-family: 'Poppins', sans-serif;
 	text-transform: uppercase;
 	margin: 1rem 0;

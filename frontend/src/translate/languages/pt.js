@@ -878,7 +878,7 @@ const messages = {
             goodMorning: "Oi,",
             myName: "meu nome é",
             continuity: "e darei continuidade em seu atendimento.",
-            virtualAssistant: "Assistente Virtual"
+            virtualAssistant: "Mensagem Automática" 
           },
           message: {
             location: "Localização",

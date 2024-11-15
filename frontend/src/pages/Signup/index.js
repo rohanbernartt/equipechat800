@@ -102,7 +102,7 @@ const SignUp = () => {
     const [loading, setLoading] = useState(false);
 
     let companyId = null
-    const params = qs.parse(window.location.search)
+    const params = qs.parse(window.location.search) 
     if (params.companyId !== undefined) {
         companyId = params.companyId
     }

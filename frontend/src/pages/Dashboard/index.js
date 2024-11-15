@@ -438,7 +438,7 @@ const Dashboard = () => {
                   htmlColor="white"
                   style={{
                     backgroundColor: "#0F7EE5",
-                    borderRadius: "30%",
+                    borderRadius: "100%",
                     padding: "8px",
                     // border: "1px solid #ccc",
                     // boxSizing: "border-box",
@@ -598,8 +598,10 @@ const Dashboard = () => {
               title="Data Vencimento"
               value={companyDueDate}
               loading={loading}
-              icon={
-                <div style={{
+              icon={<DateRangeIcon
+                fontSize="inherit"
+                htmlColor="white"
+                style={{
                   backgroundColor: "#0F7EE5",
                   borderRadius: "100%",
                   padding: "10px",
@@ -607,12 +609,8 @@ const Dashboard = () => {
                   // boxSizing: "border-box",
                   // width: "80px",
                   // height: "80px"
-                }}>
-                  <DateRangeIcon
-                    fontSize="inherit"
-                    htmlColor="white"
-                  />
-                </div>
+                }}
+              />
               }
 
             />

@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "5px",
         marginLeft: "5px",
         // marginBottom: 2,
-        marginLeft: "0px",
+        // marginLeft: "5px",
         alignItems: "flex-start",
         flexWrap: "nowrap",
         flexDirection: "row",
@@ -483,7 +483,6 @@ const TicketListItemCustom = ({ ticket }) => {
                             width: "50px",
                             height: "50px",
                             borderRadius: "50%",
-                            margin: "5px"
                         }}
                         src={`${ticket?.contact?.profilePicUrl}`}
 
